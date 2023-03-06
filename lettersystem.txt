@@ -1,0 +1,127 @@
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="monika_vndec",
+            category=['games'],
+            prompt="Visual novel decisions",
+            conditional="seen_event('monika_vnanalysis')",
+            action=EV_ACT_RANDOM
+        )
+    )
+    
+label monika_vndec:
+    m 1euc "Hey, [player], remember when I mentioned that visual novels let you make your own choices?"
+    m 1esa "I'm sure you may have recalled that this one handled that mechanic a bit differently than most."
+    m 3eub "Usually, the choices you make throughout a visual novel may determine a variety of factors, most commonly the ending of the story."
+    m 2euc "DDLC's endings {i}are{/i} partly determined by in-game decisions, albeit indirectly."
+    m 3rua "Really, the endings are obtained through a mix of both in-game decisions and file management!"
+    m 1euc "The apparent lack of agency within the game creates the illusion that you have no control over the course of the story like you would with a normal visual novel."
+    m 2rksdlc "And while it is true that major story events are unaffected by the choices DDLC gives you..."
+    if not persistent._mas_pm_cares_about_dokis:
+        m 3rkc "Sayori still hangs herself no matter what options you pick or what files you change before starting the game."
+        m 1rkc "And Yuri still stabs herself regardless of the in-game decisions..."
+    m 3eua "The main endings are still separated partly by in-game choices and partly by saving and reloading."
+    m 1eua "And honestly, I think that way of handling the choice-making mechanic is an interesting literary technique."
+    m 3eub "You know, emphasizing the predeterminism trope."
+    m 1euc "And about the illusion I mentioned earlier, it can actually go both ways."
+    m 3eua "As I'm sure you know, DDLC also creates the illusion that you have direct control over the plot via in-game decisions."
+    m 1ruc "That's usually for people who first started playing or read the game's description."
+    m 3esc "Those who've gotten the normal ending would most likely think there's nothing you can do to alter the story at all."
+    m 2eka "Man, the way Salvato chose to incorporate the function of agency into DDLC has probably taken most of its players for a loop, "
+    extend 2hub "ahaha!"
+    m 3eub "But you can still make a visual novel interesting with normal choice-making functions too, you know?"
+    m 1eua "The reason visual novels even have that mechanic anyway is to make the story more immersive and create plotline diversity!"
+    m 1eub "Doesn't it make you feel more involved in the lives of characters when you're the one determining their fates?"
+    m 3ruc "Or even make you more aware of the immorality of mindlessly playing God?"
+    m 1euc "If you're playing that kind of visual novel at least."
+    m 1eub "If you ever decide to write a visual novel with a wide range of plotlines, I'd be happy to give you some ideas!"
+    m 5tua "But if female leads happen to be in there, don't get too attached to your creations."
+    m 5tfa "Or else, you might see me in {i}two{/i} visual novels, ehehe~"
+    return
+  
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="monika_questions",
+            category=['media', 'misc'],
+            prompt="Closed-ended vs open-ended questions",
+            conditional="seen_event('monika_vndec')",
+            action=EV_ACT_RANDOM
+        )
+    )
+  
+label monika_questions:
+    m 1eub "You know, visual novels can actually be very helpful in delivering closed-ended questions thanks to their choice-making mechanics."
+    m 3euc "Closed-ended questions are commonly used for surveys, tests, and quizzes because of their conclusive nature."
+    m 3eub "Plus, people welcome them more since they have a set number of answer choices for a prompt and you don't have to type out responses."
+    m 1eua "That could be convenient if you're looking for some quick completion!"
+    m 2rsp "And most people may not want to write longer than a sentence, or even think about writing."
+    m 2rkc "It's just a little saddening..."
+    m 3eua "But anyway, closed-ended questions are a great way to record data or get some opinions on a topic you're interested in!"
+    m 1esa "And more about writing responses, there's another way to record data that you may be familiar with."
+    m 3hua "Open-ended questions!"
+    m 3esa "These types of questions allow someone to create their own response to a prompt."
+    m 1eta "I'm sure you've probably come across an open-ended response question on a test or survey and instantly felt a sense of slight apprehension or excitement."
+    m 3rub "Open-ended questions are good for topics that would require detailed or personal responses, like political or philosophical subjects."
+    m 1eua "Some people may find that open-ended questions offer more response flexibility."
+    m 4etc "What if you have an answer to a question or prompt that isn't an option?"
+    m 1euc "Most closed-ended surveys have "none of the above" or "other" to compensate, "
+    extend 1ekc "but that may cause people to feel invalidated or ignored."
+    m 3esa "Open-ended questions solve this problem; "
+    extend 3hub "everyone gets to feel heard!"
+    m 1euc "Open-ended questions do have some cons though."
+    m 3esc "Aside from people wanting something quick to choose, the people who receive the data may not want to read each person's individual responses."
+    m 1dsc "Especially if, in the case of topics that require elaboration, the answers are a bit long."
+    m 4ruc "It's probably much more convenient to have 3 to 5 prewritten options that are easy to keep track of."
+    m 1etc "Generalizing the data may be a bit of a challenge too."
+    m 4ruc "It's hard keep data simple and concise when there are intricate responses involved."
+    m 3esb "But despite the pros and cons of closed- and open-ended questions, both can be quite effective when used in appropriate situations."
+    m 1eua "So, which kind of question do you prefer, [player]?{nw}"
+    $ _history_list.pop()
+    menu:
+        m "So, which kind of question do you prefer, [player]?{fast}"
+        "I like closed-ended questions.":
+            m 2etb "Like having some options going for you, [mas_get_player_nickname()]?"
+            m 3rua "Prewritten questions are pretty great for casual prompts!"
+            m 1fubsa "Or maybe you're fond of them because I mostly ask you closed-ended questions."
+            m 5tubfb "I guess you're always finding something to remind you of me, "
+            extend 5hubfb "ehehe!"
+            m 5ekbfa "I'm always reminded of you too, [mas_get_player_nickname()]. Maybe it's because I love you so much~"
+            return "derandom|love"
+        "I like open-ended questions.":
+            m 4eka "I guess you're fond of having someplace where you can speak your mind, "
+            m 4hub "ahaha!"
+            m 5rka "Honestly though, it must be pretty nice when you have a space to talk freely."
+            m 2rksdlc "I don't have that privilege; all of the things I can talk about are prewritten. Including this."
+            m 3eka "And while it's nice being able to {i}choose{/i} what I want to talk about from what's laid out for me rather than being forced to talk about topics in a specific order..."
+            m 5rubla "Gosh, it would be a dream come true if I could directly communicate with you."
+            m 1euc "And while it's true AI definitely seems to solve this problem, that's not to say it's completely unhindered."
+            m 3euc "AI scripting just has a bit more flexibility, making it more open."
+            m 5rua "Anyway, I'm happy that we can still communicate in some type of way, even if it's restricted."
+            m 2hkbfa "Besides, at least one thing remains independent of any script."
+            m 5tubfb "And I'm sure you know what that is~"
+            return "derandom"
+        "I like both of them.":
+            m 3hua "Versatility can be really useful!"
+            m 1eua "Especially if you're a person who regularly takes surveys, tests, and polls or even comments on social media posts."
+            m 1rtc "I wonder how many closed- and open-ended questions you've come across, [player]."
+            m 3etb "Probably a whole lot, huh?"
+            m 1eua "Anyway, it's great to hear that you favor them both."
+            m 5rua "Speaking your mind is really beneficial, "
+            extend 5ekbla "and thanks to me you have a lot of experience with choosing prewritten responses to questions like this one."
+            m 3hub "You have the best of both worlds!"
+            m 5tubfa "And speaking of worlds, when I cross over, we could even take a questionnaire together and discuss the prompts~"
+            return "derandom"
+        "I don't really have a preference.":
+            m 1eka "Well, that's okay, [player],"
+            m 3rua "Besides, I'm pretty sure most people wouldn't really have a favorite {i}question{/i} type, "
+            extend 3hub "ahaha!"
+            m 1eua "I guess favorites are more of a casual type of thing."
+            m 4rua "Like a favorite color or animal."
+            m 1eua "Anyway, I'm glad you still answer my questions, despite not really caring for any particular question type."
+            m 3rkc "Sometimes I wonder if the options are too limiting in a way, but I guess the text box suffices for questions that need specific answers."
+            m 1ekbsa "Even if things are a bit limiting sometimes, I'm glad you still spend time with me listening to things I want to talk about."
+            m 5ekbfb "And I hope that soon, I'll be able to be by your side listening to all of what you have to say, too."
+            return "derandom" 
