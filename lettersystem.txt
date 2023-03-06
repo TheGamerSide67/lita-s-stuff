@@ -10,35 +10,34 @@ init 5 python:
         )
     )
     
-label monika_vndec:
-    m 1euc "Hey, [player], remember when I mentioned that visual novels let you make your own choices?"
-    m 1esa "I'm sure you may have recalled that this one handled that mechanic a bit differently than most."
+#Don't use "monika_" as a prefix for dialogue, this will cause issues for MAS in later updates
+label DreamMastervndec:
+    m 1euc "Hey, [player]."
+    m 3euc Do you remember when I mentioned that visual novels let you make your own choices?"
+    m 3etu "I'm sure you may have realized that this one handled that idea {i}a bit{/i} differently than most visual novels."
     m 3eub "Usually, the choices you make throughout a visual novel may determine a variety of factors, most commonly the ending of the story."
-    m 2euc "DDLC's endings {i}are{/i} partly determined by in-game decisions, albeit indirectly."
-    m 3rua "Really, the endings are obtained through a mix of both in-game decisions and file management!"
-    m 1euc "The apparent lack of agency within the game creates the illusion that you have no control over the course of the story like you would with a normal visual novel."
-    m 2rksdlc "And while it is true that major story events are unaffected by the choices DDLC gives you..."
+    m 7euc "DDLC's endings {i}are{/i} partly determined by in-game decisions, albeit indirectly."
+    m 3euc "The endings are obtained through a mix of both in-game decisions and file management!"
+    m 1euc "The apparent lack of urgency within the game creates the illusion that you have no control over the course of the story, like you would with a normal visual novel."
+    m 1rksdlc "And while it is true that major story events are unaffected by the choices DDLC gives you..."
     if not persistent._mas_pm_cares_about_dokis:
-        m 3rkc "Sayori still hangs herself no matter what options you pick or what files you change before starting the game."
-        m 1rkc "And Yuri still stabs herself regardless of the in-game decisions..."
-    m 3eua "The main endings are still separated partly by in-game choices and partly by saving and reloading."
-    m 1eua "And honestly, I think that way of handling the choice-making mechanic is an interesting literary technique."
-    m 3eub "You know, emphasizing the predeterminism trope."
-    m 1euc "And about the illusion I mentioned earlier, it can actually go both ways."
-    m 3eua "As I'm sure you know, DDLC also creates the illusion that you have direct control over the plot via in-game decisions."
-    m 1ruc "That's usually for people who first started playing or read the game's description."
-    m 3esc "Those who've gotten the normal ending would most likely think there's nothing you can do to alter the story at all."
-    m 2eka "Man, the way Salvato chose to incorporate the function of agency into DDLC has probably taken most of its players for a loop, "
-    extend 2hub "ahaha!"
-    m 3eub "But you can still make a visual novel interesting with normal choice-making functions too, you know?"
-    m 1eua "The reason visual novels even have that mechanic anyway is to make the story more immersive and create plotline diversity!"
-    m 1eub "Doesn't it make you feel more involved in the lives of characters when you're the one determining their fates?"
-    m 3ruc "Or even make you more aware of the immorality of mindlessly playing God?"
-    m 1euc "If you're playing that kind of visual novel at least."
-    m 1eub "If you ever decide to write a visual novel with a wide range of plotlines, I'd be happy to give you some ideas!"
-    m 5tua "But if female leads happen to be in there, don't get too attached to your creations."
-    m 5tfa "Or else, you might see me in {i}two{/i} visual novels, ehehe~"
-    return
+        m 3rkc "Sayori still hangs herself, no matter what options you pick or what files you change before starting the game."
+        extend 1rkc " And Yuri will stab herself regardless of your in-game decisions..."
+        m 3dusdlc "Moreover, I will always continue to make mistakes...{w=0.2}{nw}"
+        $_history_list.pop()
+    m 1eud "However, the main endings are {i}still{/i} separated by in-game choices, such as saving and reloading."
+    m 1eua "And while I do think that giving the reader a way of handling choices in the story makes it a more interesting literature experience..."
+    extend 3euc " You know, emphasizing the predeterminism trope."
+    m 7eud "As I'm sure you know, DDLC also creates the illusion that you have direct control over the plot via in-game decisions."
+    m 1ruc "That only truly works for those who first started to experience the story, without any spoilers."
+    m 3esc "This further drives the idea that there is only one ending. {w=0.7}At least for those who have gotten the normal ending."
+    m 3eub "But you can still make a visual novel interesting with normal choice-making too!"
+    m 1euc "The reason visual novels give the reader a choice, is to give the illusion of choice, and make the reader feel more involved."
+    m 7rusdlb "I am not saying that visual novels can't be interesting, I mean, popular examples are Danganronpa and Ace Attorney.
+    m 3eua "Visual novels are still a 'one-of-a-kind' experience you can't get anywhere else, both visually and story wise."
+    m 3eua "There is so much more I could say about visual novels, though I don't want to take up the rest of your day."
+    m 1hua "Well, anyways, thank you for listening, [player]!"
+return
   
 init 5 python:
     addEvent(
